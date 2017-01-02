@@ -1,0 +1,20 @@
+.scratchcard {
+    position: relative;
+}
+
+.scratchcard > canvas {
+    border: 1px solid #000;
+}
+
+.scratchcard > canvas,
+.scratchcard > img:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.scratchcard,
+.scratchcard * {
+    -webkit-user-select: none;
+    user-select: none;
+}
