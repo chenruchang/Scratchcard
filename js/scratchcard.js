@@ -51,6 +51,8 @@
 
       this.offsetxy = this.canvas.offset();
 
+      document.body.addEventListener('touchmove', function (event) {event.preventDefault();}, true);
+
       this.canvas.on({
         'mousedown': $.proxy(this.eventDown, this),
         'mousemove': $.proxy(this.eventMove, this),
