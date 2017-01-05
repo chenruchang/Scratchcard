@@ -51,8 +51,6 @@
 
       this.offsetxy = this.canvas.offset();
 
-      document.body.addEventListener('touchmove', function (event) {event.preventDefault();}, true);
-
       this.canvas.on({
         'mousedown': $.proxy(this.eventDown, this),
         'mousemove': $.proxy(this.eventMove, this),
@@ -74,6 +72,8 @@
       this.isScratching = true;
     },
     eventMove: function (e) {
+      e.preventDefault();
+
       var context = this.context;
       if (!this.isScratching) {
         return;
