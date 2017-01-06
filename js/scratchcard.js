@@ -1,9 +1,10 @@
 (function ($, window, document, undefined) {
 
   var defaults = {
-    width: 300,
-    height: 150,
+    width: 400,
+    height: 200,
     lineWidth: 20,
+    clearRate: 0.3,
     sourceImage: '',
     destinationImage: ''
   };
@@ -87,6 +88,18 @@
     },
     eventUp: function () {
       this.isScratching = false;
+
+      var data = this.context.getImageData(0, 0, this.options.width, this.options.height).data;
+
+      for (var i = 0, j = 0; i < data.length; i += 4) {
+        if (data[i] && data[i + 1] && data[i + 2] && data[i + 3]) {
+          j++;
+        }
+      }
+
+      if (j <= this.options.width * this.options.height * (1 - this.options.clearRate)) {
+        this.context.clearRect(0, 0, this.options.width, this.options.height);
+      }
     }
   };
 
